@@ -85,6 +85,7 @@ public class TaskController {
     public String addSubtask(@ModelAttribute @Valid SubtaskDTO subtaskDTO, BindingResult bindingResult, @RequestParam(value = "id") int id, Model model){
         if (bindingResult.hasErrors()){
             System.out.println(bindingResult.getAllErrors());
+            model.addAttribute("id",id);
             return "addSubtaskForm";
         }
         taskService.addSubtask(id,subtaskDTO);
