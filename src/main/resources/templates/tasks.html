@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title th:text="#{Tasks}"></title>
+
+</head>
+<body>
+<header>
+    <nav id="navbar">
+        <ul>
+            <li><a th:href="@{'/tasks'}" th:text="#{Tasks}"></a></li>
+            <li><a th:href="@{'/tasks/new'}" th:text="#{Add_a_task}"></a></li>
+            <li class="language"><a th:href="@{'/tasks/?lang=en'}" th:text="#{lang.en}"></a></li>
+            <li class="language"><a th:href="@{'/tasks/?lang=nl'}" th:text="#{lang.nl}"></a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+
+    <h1 th:text="#{Tasks}"></h1>
+    <div th:if="${tasks==null or tasks.isEmpty()}">
+        <p th:text="#{No_task_left_to_do}"></p>
+    </div>
+    <div th:if="${tasks!=null and !tasks.isEmpty()}">
+        <table class="tableTasks">
+            <tr>
+                <th th:text="#{Deadline}"></th>
+                <th th:text="#{Title}"></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="task:${tasks}">
+                <td th:text="${task.stringDeadline}"></td>
+                <td th:text="${task.title}"></td>
+                <td><a th:href="@{'tasks/' + ${task.id}}">details</a></td>
+                <td><a th:href="@{'tasks/edit/' + ${task.id}}" th:text="#{edit}"></a></td>
+                <td><a th:href="@{'tasks/' + ${task.id} + '/sub/create'}" th:text="#{voeg_subtask_toe}"></a></td>
+            </tr>
+        </table>
+    </div>
+</main>
+
+</body>
+</html>

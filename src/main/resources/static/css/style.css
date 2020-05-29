@@ -1,0 +1,85 @@
+.tableTasks, .tableSubtasks {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: auto;
+}
+
+.tableTasks td, .tableSubtasks td, .tableTasks th, .tableSubtasks th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.tableTasks tr:nth-child(even), .tableSubtasks tr:nth-child(even){background-color: #f2f2f2;}
+
+.tableTasks tr:hover, .tableSubtasks tr:hover {background-color: #ddd;}
+
+.tableTasks th, .tableSubtasks th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4570dd;
+    color: white;
+}
+
+.tableSubtasks th{
+    background-color: rgba(152,154,222,0.55);
+}
+
+
+/*
+.centered-layout {
+    display: flex;
+    justify-content: center;
+}
+
+.centered-layout form{
+    border-style: solid;
+    border-color: black;
+    border-radius: 5px;
+    border-width: 2px;
+    min-width: 30rem;
+    width: 50vw;
+}
+
+form>*{
+    padding: 0.5rem;
+    margin: 1rem 2rem;
+    width: -moz-available;
+    display: block;
+}*/
+
+form>*{
+    display: block;
+}
+
+#navbar ul{
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+    background-color: #dddddd;
+}
+
+#navbar li{
+    display: inline-block;
+}
+
+#navbar a {
+    display: block;
+    background-color: #dddddd;
+    text-decoration: none;
+    color: #000;
+    padding: 10px 20px;
+}
+
+
+#navbar a:hover{
+    background-color: rgba(187, 187, 187, 0.99);
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    margin: 10px;
+}

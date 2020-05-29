@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title th:text="#{Add_task}"></title>
+</head>
+<body>
+<header>
+    <nav id="navbar">
+        <ul>
+            <li><a th:href="@{'/tasks'}" th:text="#{Tasks}"></a></li>
+            <li><a th:href="@{'/tasks/new'}" th:text="#{Add_a_task}"></a></li>
+            <li class="language"><a th:href="@{'/?lang=en'}" th:text="#{lang.en}"></a></li>
+            <li class="language"><a th:href="@{'/?lang=nl'}" th:text="#{lang.nl}"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <h1 th:text="#{Add_task}"></h1>
+
+    <div class="centered-layout">
+        <form action="/addTask" method="post" th:object="${taskDTO}" novalidate>
+
+            <input type="text" th:field="*{title}" th:placeholder="#{Title}">
+            <p th:errors="*{title}"></p>
+
+            <input type="text" th:field="*{description}" th:placeholder="#{Description}">
+            <p th:errors="*{description}"></p>
+
+            <input type="datetime-local" th:field="*{deadline}">
+            <p th:errors="*{deadline}"></p>
+
+            <input type="submit" th:value="#{Add_task}">
+        </form>
+    </div>
+
+</main>
+</body>
+</html>

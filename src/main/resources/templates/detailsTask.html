@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title th:text="#{Details_Task}"></title>
+
+</head>
+<body>
+<header>
+    <nav id="navbar">
+        <ul>
+            <li><a th:href="@{'/tasks'}" th:text="#{Tasks}"></a></li>
+            <li><a th:href="@{'/tasks/new'}" th:text="#{Add_a_task}"></a></li>
+            <li class="language"><a th:href="@{'/?lang=en'}" th:text="#{lang.en}"></a></li>
+            <li class="language"><a th:href="@{'/?lang=nl'}" th:text="#{lang.nl}"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <h1 th:text="#{Details_Task}"></h1>
+
+    <div th:if="${requestedTask==null}">
+        <p th:text="#{Task_not_found}"></p>
+    </div>
+
+    <div th:if="${requestedTask!=null}">
+        <table class="tableTasks">
+            <tr>
+                <th th:text="#{Deadline}"></th>
+                <th th:text="#{Title}"></th>
+                <th th:text="#{Description}"></th>
+            </tr>
+            <tr>
+                <td th:text="${requestedTask.stringDeadline}"></td>
+                <td th:text="${requestedTask.title}"></td>
+                <td th:text="${requestedTask.description}"></td>
+            </tr>
+        </table>
+
+        <a th:href="@{'/tasks/' + ${requestedTask.id} + '/sub/create'}" th:text="#{Add_subtask}"></a>
+
+
+        <div th:if="${!requestedTask.subtasks.isEmpty()}">
+            <h2 th:text="#{Subtasks}"></h2>
+            <table class="tableSubtasks">
+                <tr>
+                    <th th:text="#{Title}"></th>
+                    <th th:text="#{Description}"></th>
+                </tr>
+                <tr th:each="subtask:${requestedTask.subtasks}">
+                    <td th:text="${subtask.title}"></td>
+                    <td th:text="${subtask.description}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+</main>
+
+
+</body>
+</html>

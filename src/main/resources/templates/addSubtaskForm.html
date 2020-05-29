@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title th:text="#{Add_subtask}"></title>
+</head>
+<body>
+<header>
+    <nav id="navbar">
+        <ul>
+            <li><a th:href="@{'/tasks'}" th:text="#{Tasks}"></a></li>
+            <li><a th:href="@{'/tasks/new'}" th:text="#{Add_a_task}"></a></li>
+            <li class="language"><a th:href="@{'/?lang=en'}" th:text="#{lang.en}"></a></li>
+            <li class="language"><a th:href="@{'/?lang=nl'}" th:text="#{lang.nl}"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <h1>Add Subtask</h1>
+
+    <div class="centered-layout">
+        <form action="/addSubtask" method="post" th:object="${subtaskDTO}" novalidate>
+
+            <input type="hidden" name="id" th:value="${id}">
+
+            <input type="text" th:field="*{title}" th:placeholder="#{Title}">
+            <p th:errors="*{title}"></p>
+
+            <input type="text" th:field="*{description}" th:placeholder="#{Description}">
+            <p th:errors="*{description}"></p>
+
+            <input type="submit" th:value="#{Add_subtask}">
+        </form>
+    </div>
+</main>
+
+</body>
+</html>

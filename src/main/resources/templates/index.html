@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <title>Home</title>
+</head>
+<body>
+<header>
+    <nav id="navbar">
+        <ul>
+            <li><a th:href="@{'tasks'}" th:text="#{Tasks}"></a></li>
+            <li><a th:href="@{'tasks/new'}" th:text="#{Add_a_task}"></a></li>
+            <li class="language"><a th:href="@{'/?lang=en'}" th:text="#{lang.en}"></a></li>
+            <li class="language"><a th:href="@{'/?lang=nl'}" th:text="#{lang.nl}"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+
+    <h1 th:text="#{Welcome_to_your_taskmanager}">Welcome to your taskmanager</h1>
+    <p th:text="#{Use_in_Chrome}"></p>
+</main>
+
+<!--<span th:text="#{changeLanguage}"></span>:
+<select id="locales">
+    <option value=""></option>
+    <option value="en" th:text="#{lang.en}"></option>
+    <option value="nl" th:text="#{lang.nl}"></option>
+</select>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#locales").change(function () {
+            var selectedOption = $('#locales').val();
+            if (selectedOption != ''){
+                window.location.replace('?lang=' + selectedOption);
+            }
+        });
+    });
+</script>-->
+</body>
+</html>
